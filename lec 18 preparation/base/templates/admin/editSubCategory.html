@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Sub Category</title>
+</head>
+<body>
+<form action="/admin/update_subcategory" method="post">
+{#    <select name="categoryId" id="categoryId">#}
+{#        <option value="{{ subcategory_vo_list[0][0].category_id }}">{{ subcategory_vo_list[0][0].category_name }}</option>#}
+{#        {% for value in category_vo_list%}#}
+{#            <option value="{{ value.category_id }}">{{ value.category_name }}</option>#}
+{#        {% endfor %}#}
+{#    </select>#}
+
+Add Name:<input type="text"  name="subcat_name" value={{ subcategory_vo_list[0][1]['subcategory_name'] }}></br></br>
+    Add Description:<textarea name="subcat_description" >{{ subcategory_vo_list[0][1]['subcategory_description'] }}</textarea></br></br>
+    <input type="submit">
+    <input type="hidden" name="subcatId" value={{ subcategory_vo_list[0][1]['subcategory_id'] }}>
+</form>
+
+</body>
+</html>

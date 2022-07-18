@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD Product </title>
+    <script>
+        function product()
+       {
+         alert('HI');
+           var category_id = document.getElementById('product_category');
+           var subcategory_id = document.getElementById('product_subcategory');
+
+{#         console.log(login_username.value, login_password.value);#}
+           subcategory_id.innerHTML = '';
+
+           var ajax = new XMLHttpRequest();
+
+           ajax.onreadystatechange = function ()
+           {
+               console.log('Onreadystate change function');
+               if(ajax.readyState === 4) {
+                   var json = JSON.parse(ajax.responseText);
+                   alert(ajax.responseText);
+
+
+                   for (var i = 0; i <= json.length; i++) {
+                       {#               for (key,value in i)#}
+                       {#               {#}
+                       var opt = document.createElement('option');
+                       opt.value = json[i].subcategory_id;
+                       opt.text = json[i].subcategory_name;
+                       subcategory_id.add(opt);
+                       {#               }#}
+                   }
+               }
+       };
+       ajax.open("GET","/admin/load_product_subcategory?prodcat="+category_id.value, true);
+           ajax.send();
+
+       }
+
+    </script>
+</head>
+<body>
+<form action="/admin/insert_product" method="post"
+      enctype="multipart/form-data">
+<table border="2px solid black" align="center" >
+
+    <tr>
+    <td>Product Name:</td>
+    <td><input type="text" name="productName"></td>
+    </tr>
+
+    <tr>
+    <td>Product Description:</td>
+    <td><input type="text" name="productDescription"></td>
+    </tr>
+
+    <tr>
+    <td>Product Price:</td>
+    <td><input type="text" name="productPrice"></td>
+    </tr>
+
+    <tr>
+    <td>Product Quantity:</td>
+    <td><input type="text" name="productQuantity"></td>
+    </tr>
+
+    <tr>
+    <td>Upload File:</td>
+    <td><input type="file" name="productImage" accept="image/jpeg, image/png, image/jpg"></td>
+    </tr>
+
+    <tr>
+        <td>Category:</td>
+            <td>
+                <select id="product_category" name="productCategory" onchange="product()">
+                <option> --Select Category--</option>
+                {% for i in product_vo_list  %}
+                    <option value="{{ i['category_id']}}"> {{ i['category_name'] }} </option>
+                {% endfor %}
+                </select>
+            </td>
+    </tr>
+    <tr>
+        <td>Subcategory:</td>
+    <td><select id="product_subcategory" name="productSubcategory">
+        <option > --Select Subcategory--</option>
+    </select>
+    </td>
+
+    </tr>
+    <tr><td><center><input type="submit" name="SUBMIT"></center></td></tr>
+</table>
+</form>
+</body>
+</html>

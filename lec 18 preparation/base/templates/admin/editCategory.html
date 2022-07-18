@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Category</title>
+</head>
+<body>
+<form action="/admin/update_category" method="post">
+
+Add Name:<input type="text" name="cat_name" value={{ category_vo_list[0]['category_name'] }}></br></br>
+    Add Description:<textarea name="cat_description" >{{ category_vo_list[0]['category_description'] }}</textarea></br></br>
+    <input type="submit">
+    <input type="hidden" name="catId" value={{ category_vo_list[0]['category_id'] }}>
+</form>
+
+</body>
+</html>

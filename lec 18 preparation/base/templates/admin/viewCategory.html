@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Category</title>
+</head>
+<body>
+<table border="2" align="center">
+<tr>
+        <th>Category Name</th>
+        <th>Category Description</th>
+        <th>Delete</th>
+        <th>Edit</th>
+</tr>
+{% for i in category_vo_list %}
+<tr>
+    <td>{{ i['category_name'] }}</td>
+    <td>{{ i['category_description'] }}</td>
+    <td><a href="/admin/delete_category?uid={{ i['category_id'] }}">Delete</a></td>
+    <td><a href="/admin/edit_category?eid={{ i['category_id'] }}">Edit</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add SubCategory</title>
+</head>
+<body>
+<form action="/admin/insert_subcategory" method="post">
+
+    <tr>
+        <td>
+            <select name="subcategory_category_id">
+            {% for i in category_vo_list %}
+                <option value={{ i['category_id'] }}>{{ i['category_name'] }}</option>
+            {% endfor %}
+
+            </select>
+        </td>
+    </tr>
+
+    <br><br>
+
+    Add Name:<input type="text" name="subcategory_name"></br></br>
+    Add Description:<textarea name="subcategory_description"></textarea></br></br>
+
+    <input type="submit">
+</form>
+</body>
+</html>
